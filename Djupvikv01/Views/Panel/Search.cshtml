@@ -1,0 +1,30 @@
+﻿
+@using Djupvikv01.Models;
+@model dynamic;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron mt-1">
+ <h1 class="ml-4">Resultat</h1>
+    <hr />
+
+
+    @foreach (ArticleModel ar in Model.artikelobj)
+    {
+<div class="bg-light p-4 mt-1 rounded">
+
+    <h4> @ar.rubrik </h4>
+    <hr />
+    @ar.sammanfattning
+    <br />
+
+    <a href="/Panel/Details/@ar.id">Visa mer</a>
+
+
+</div>
+    }
+    </div> 
+ 

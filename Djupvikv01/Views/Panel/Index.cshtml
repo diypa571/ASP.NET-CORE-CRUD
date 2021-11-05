@@ -1,0 +1,144 @@
+﻿
+@using Djupvikv01.Models;
+@model dynamic;
+
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+<div class="jumbotron mt-1">
+    <h4 class="ml-4">ARTIKLAR</h4>
+
+    @foreach (ArticleModel ar in Model.artikelobj)
+    {
+
+ 
+
+            <div class="container">
+
+                <div class="row bg-light mt-1 p-2 rounded">
+                    <div class="col-sm">
+                  
+                        <h5> @ar.rubrik</h5> 
+                        <span>@ar.datum</span>
+                        <p>
+                            <img class="rounded" src="@ar.bild" alt="Jordgubbe" width="50" />
+                        </p>
+                    </div>
+
+
+                    <div class="col-auto">
+                        <a href="/Panel/Details/@ar.id">Visa <i class="fas fa-eye"></i></a>
+                        |
+                        <a href="/Panel/Edit/@ar.id">Ändra <i class="far fa-edit"></i> </a>
+                        |
+                        <a href="/Panel/Delete/@ar.id">Radera <i class="fas fa-trash"></i> </a>
+                    </div>
+                </div>
+            </div>
+        
+
+            }
+
+    </div>
+ 
+
+
+<div class="jumbotron mt-1">
+    <h4 class="ml-4">MEDLEMMAR</h4> 
+
+    @foreach (UsersModel user in Model.userslist)
+    {
+    <p class="bg-light p-2 m-1 rounded">
+
+
+        <i class="fas fa-user"></i> Namn:   @user.namn <br />
+         <i class="fas fa-envelope"></i>  Email:  @user.email <br />
+       <i class="fas fa-calendar-alt"></i>  Registrerats:  @user.datum
+
+    </p>
+    }
+    </div>
+
+
+<div class="jumbotron mt-1">
+
+
+    <h1 class="ml-4">Artikel filtrering</h1>
+    Nedan kan du välja namn på författare för att visa författarens artiklar
+
+    <form action="/Panel/Fil" method="get" class="form-inline my-2 my-lg-0">
+
+        <select name="author" class="form-control mr-sm-2">
+            <option value="0" selected>Välja författare</option>
+            <option value="1">Adam</option>
+            <option value="2">Bob</option>
+            <option value="3">Charlie</option>
+            <option value="4">David</option>
+        </select>
+
+        <button class="btn btn-success my-2 my-sm-0" type="submit">Filtrera</button>
+    </form>
+
+
+
+
+
+    <div class="d-none">
+        Artikeltyp
+        @foreach (ArticletypModel artyp in Model.artyplist)
+        {
+
+            if (@artyp.id == 1)
+            {
+                <p>
+
+                    @artyp.id
+                    @artyp.artikeltyp
+
+
+                </p>
+            }
+        }
+    </div>
+
+
+
+    <hr />
+
+
+
+    <h1 class="ml-4">Artikel sortering</h1>
+    Välj nedan hur du vill sortera artiklarna...
+
+    <div class="jumbotron mt-1">
+        <form action="/Panel/Sorting" method="get" class="form-inline my-2 my-lg-0">
+
+            <select name="sort" class="form-control mr-sm-2">
+                <option value="0" selected>Sortera artiklar</option>
+                <option value="id">ID</option>
+                <option value="title">ALFABET</option>
+            </select>
+
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Sortera</button>
+        </form>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>

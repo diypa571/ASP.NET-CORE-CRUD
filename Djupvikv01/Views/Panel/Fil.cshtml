@@ -1,0 +1,53 @@
+﻿@using Djupvikv01.Models;
+@model dynamic;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="jumbotron mt-1">
+    <h1 class="ml-4">Artikel filtrering</h1>
+    Nedan kan du välja namn på författare för att visa författarens artiklar
+    <hr />
+
+    <div class="jumbotron mt-1">
+        <form action="/Panel/Fil" method="get" class="form-inline my-2 my-lg-0">
+       
+            <select name="author" class="form-control mr-sm-2">
+                <option value="0" selected>Välja författare</option>
+                <option value="1">Adam</option>
+                <option value="2">Bob</option>
+                <option value="3">Charlie</option>
+                <option value="4">David</option>
+            </select>
+
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Filtrera</button>
+        </form>
+
+
+
+   
+
+
+
+        <hr />
+
+
+        @foreach (ArticleModel ar in Model.artikelobj)
+        {
+            <div class="bg-light p-4 mt-1 rounded">
+
+                <h4> @ar.rubrik </h4>
+                <hr />
+                @ar.sammanfattning
+                <br />
+
+                <a href="/Panel/Details/@ar.id">Visa mer</a>
+
+
+            </div>
+        }
+    </div>

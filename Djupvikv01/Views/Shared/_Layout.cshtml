@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Djupvikv01</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/fontawesome/css/all.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+<header class="bg-dark">
+
+
+<nav class="navbar navbar-expand-lg navbar-dark  container">
+<a class="navbar-brand" href="/Panel/"> PANEL <i class="fas fa-database"></i> </a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" asp-controller="Panel" asp-action="Index">Startsida  <i class="fas fa-home"></i> <span class="sr-only">(current)</span></a>
+
+        </li>
+        <li class="nav-item d-none">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Artiklar <i class="fas fa-user-edit"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/Panel/create">Läggtill ny artikel</a>
+                <a class="dropdown-item" href="/Panel/">Hantera artiklar</a>
+
+            </div>
+        </li>
+
+
+
+        <li class="nav-item dropdown d-none">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Profil
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/Panel/create">Läggtill ny artikel</a>
+                <a class="dropdown-item" href="/Panel/">Hantera artiklar</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </li>
+
+
+
+
+    </ul>
+
+     
+    <form asp-action="Search" method="post" class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" name="keyword" placeholder="Sök" aria-label="Search" required>
+        <button class="btn btn-success my-2 my-sm-0" type="submit">SÖK</button>
+    </form>
+
+
+ 
+
+
+
+
+
+
+
+</div>
+</nav>
+
+</header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+
+
+     
+
+
+
+<footer class="border-top footer bg-dark text-white">
+    <div class="container text-center">
+        Databasteknik och webbbaserade system 
+ 
+    </div>
+</footer>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

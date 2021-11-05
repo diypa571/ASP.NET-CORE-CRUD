@@ -1,0 +1,147 @@
+﻿@model Djupvikv01.Models.ArticleModel
+<script src="~/ckeditor5/ckeditor.js"></script>
+
+@{
+    ViewData["Title"] = "Create";
+
+}
+<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+
+<div class="jumbotron mt-1">
+
+
+    @using (Html.BeginForm("ProcessCreate", "Panel"))
+    {
+        @Html.AntiForgeryToken();
+
+
+        string Date = DateTime.Now.ToString("yyyy-MM-dd HH:MM:ss");
+        <h1>Skriv en ny artikel</h1>
+
+
+        <hr />
+
+
+
+
+        <form asp-action="Create">
+
+            <label for="artikeltyp" class="control-label"> Välj Artikeltyp - Nuvarande @Model.artikeltyp </label>
+            <select name="artikeltyp" asp-for="artikeltyp" class="form-control">
+
+                <option value="1">Nyheter</option>
+                <option value="2">Kultur</option>
+                <option value="3">Vetenskap</option>
+                <option value="4">Hälsa</option>
+                <option value="5">Film</option>
+
+            </select>
+
+
+
+            <div class="form-group d-none">
+                <label>Författare:</label>
+                <input value="1" asp-for="forfattare" class="form-control" required />
+                <span asp-validation-for="forfattare" class="text-danger"></span>
+            </div>
+
+
+
+            <label>Rubrik:</label>
+            <div class="form-group">
+                <input asp-for="rubrik" class="form-control" required />
+                <span asp-validation-for="rubrik" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="sammanfattning" class="control-label"></label>
+                <input asp-for="sammanfattning" class="form-control" required />
+
+                <span asp-validation-for="sammanfattning" class="text-danger"></span>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="control-label">Innehåll</label>
+
+                <textarea id="editor" asp-for="innehall" mode="multiline" runat="server" class="form-control" rows="10" cols="20">
+                </textarea>
+
+                <span asp-validation-for="innehall" class="text-danger"></span>
+            </div>
+
+
+
+
+
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"> <a onclick="myFunction()"> Välj bild  <i class="fas fa-images"></i> </a></span>
+                </div>
+                <input id="enBildId" asp-for="bild" class="form-control" required />
+                <span asp-validation-for="bild" class="text-danger"></span>
+            </div>
+
+
+
+
+            <div class="form-group d-none">
+                <label asp-for="datum" class="control-label"></label>
+                <input asp-for="datum" class="form-control" value="@Date" required />
+                <span asp-validation-for="datum" class="text-danger"></span>
+            </div>
+
+
+            <input type="hidden" name="id" id="id" value="@Model.id" />
+
+
+            <div class="form-group">
+                <input type="submit" value="Spara" class="btn btn-primary" />
+            </div>
+        </form>
+
+
+
+
+    }
+</div>
+
+
+<script>
+    function myFunction() {
+        window.open("/Panel/Picker", "_blank", "location=no, directories=no, status=no, menubar=no,toolbar=no,scrollbars=yes,resizable=no,top=100,left=500,width=600,height=680");
+    }
+
+
+
+
+    ClassicEditor
+        .create(document.querySelector('#editor'),
+            {
+                //extraPlugins: [MyCustomUploadAdapterPlugin],
+            })
+
+        .then(editor => {
+            window.editor = editor;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+
+
+
+
+

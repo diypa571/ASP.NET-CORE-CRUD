@@ -1,0 +1,50 @@
+﻿@using Djupvikv01.Models;
+@model dynamic;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="jumbotron mt-1">
+
+
+    <h1 class="ml-4">Artikel sortering</h1>
+    Välj nedan hur du vill sortera artiklarna...
+    <hr />
+
+    <div class="jumbotron mt-1">
+        <form action="/Panel/Sorting" method="get" class="form-inline my-2 my-lg-0">
+
+            <select name="sort" class="form-control mr-sm-2">
+                <option value="0" selected>Sortera artiklar</option>
+                <option value="id">ID</option>
+                <option value="title">ALFABET</option>
+            </select>
+
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Sortera</button>
+        </form>
+
+         
+
+
+        <hr />
+
+
+        @foreach (ArticleModel ar in Model.artikelobj)
+        {
+    <div class="bg-light p-4 mt-1 rounded">
+
+        <h4>   <i class="far fa-bookmark"></i>  @ar.rubrik </h4>
+        <hr />
+        @ar.sammanfattning
+        <br />
+        Artikelnr [@ar.id]
+        <a href="/Panel/Details/@ar.id">Visa mer</a>
+
+
+    </div>
+        }
+    </div>

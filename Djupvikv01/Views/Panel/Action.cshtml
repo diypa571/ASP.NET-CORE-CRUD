@@ -1,0 +1,29 @@
+﻿@model Djupvikv01.Models.ArticleModel
+@{
+    ViewData["Title"] = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="jumbotron mt-1">
+
+    @using (Html.BeginForm("Find", "Panel"))
+    {
+
+        <h1> Success</h1>
+
+        <h4>
+       
+  Vad vill du göra nu?
+            <br />
+
+            <a href="/Panel/">Tillbaka</a>
+
+        </h4>
+
+
+
+    }
+
+</div>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
