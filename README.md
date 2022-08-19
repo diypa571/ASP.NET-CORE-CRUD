@@ -1,6 +1,6 @@
 # ASP.NET-CORE-CRUD
-Följande är en Crud projekt, I har skrivit den med ASP.NET. 
-This is a Crud projekt I created in ASP.NET CORE 5 MVC.
+Följande är en Crud projekt, Har skrivit den med ASP.NET C#
+This is a Crud projekt I created in ASP.NET CORE 5 MVC  C#.
 
 For runing this project!
 1- Download Visual Studio Community 19 and clone this repo
